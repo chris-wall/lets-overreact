@@ -1,0 +1,19 @@
+{
+  "name": "gql-server",
+  "version": "1.0.0",
+  "description": "Simple GraphQL API server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Chris Wall <chris@aftermansoftware.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.6.12",
+    "graphql": "^14.0.2",
+    "uuid": "^3.3.2"
+  }
+}
