@@ -20,6 +20,7 @@ module.exports = buildSchema(`
   # VEHICLE type
   type Vehicle {
     key: ID
+    name: String!
     vin: String!
     make: String!
     model: String!

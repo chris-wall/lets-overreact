@@ -10,6 +10,7 @@ class VehicleType {
     this.year = obj.year;
     this.model = obj.model;
     this.driverId = obj.driverId;
+    this.name = `${obj.year} ${obj.make} ${obj.model}`;
   }
 
   driver() {
@@ -33,6 +34,9 @@ class DriverType {
 }
 
 const driverid = uuid();
+const driver2id = uuid();
+const driver3id = uuid();
+
 const db = new Database({
   'vehicle': [{
     vin: 'KL4CJFSB5FB090801',
@@ -40,11 +44,49 @@ const db = new Database({
     model: 'MDX',
     make: 'Acura',
     driverId: driverid
+  },
+  {
+    vin: '1GKER13727J154406',
+    year: '2015',
+    model: 'MDX',
+    make: 'Acura',
+    driverId: driverid
+  },
+  {
+    vin: '1HSMMAAN39H005639',
+    year: '2003',
+    model: '6',
+    make: 'Mazda',
+    driverId: driver2id
+  },
+  {
+    vin: '3VWDP7AJ5CM303206',
+    year: '1972',
+    model: 'Pinto',
+    make: 'Ford',
+    driverId: driver3id
+  },
+  {
+    vin: '5XYKW4A25BG128357',
+    year: '2010',
+    model: 'Silverado',
+    make: 'Chevy',
+    driverId: driver3id
   }],
   'driver': [{
     key: driverid,
     name: 'Chris Wall',
     email: 'chris@aftermansoftware.com',
+  },
+  {
+    key: driver2id,
+    name: 'John Doe',
+    email: 'jdoe@example.com',
+  },
+  {
+    key: driver3id,
+    name: 'Jim Bob Tucker',
+    email: 'jbtucker@example.com',
   }],
 });
 

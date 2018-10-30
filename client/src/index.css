@@ -1,14 +1,481 @@
-body {
-  margin: 0;
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100vh;
+  width: 100vw;
   padding: 0;
+  margin: 0;
+  border: none;
+  overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: stretch;
+  align-content: flex-start;
+  align-items: flex-start;
+  
+  width: 100%;
+  height: 100vh;
+}
+
+main > header {
+  width: 100%;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding: 0 0 0 1em;
+  
+  background-color: #282c34;
+  color: #efefef;
+}
+
+main > header > h3 {
+  color: #61dafb;
+  font-size: 1.25em;
+}
+main > header > nav {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+main > header > nav > a {
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: #efefef;
+  transition: all .33s ease;
+  padding: 1em;
+  text-decoration: none;
+  border-bottom: solid 2px transparent;
+}
+
+main > header > nav > a:hover {
+  background-color: #dddddd;
+  color: #141414;
+}
+
+main > header > nav > a.nav-active {
+  background-color: #141414;
+  color: #61dafb;
+  border-bottom-color: #61dafb;
+}
+
+main > header > nav > a.nav-active:hover {
+  background-color: #141414;
+  color: #61dafb;
+  border-bottom-color: #61dafb;
+}
+
+main > article {
+  overflow: hidden;
+  
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  color: #141414;
+  width: 100%;
+  height: calc(100vh - 75px);
+}
+
+section.master-detail {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+
+  min-height: 100%;
+  width: 100%;
+}
+
+section.master-detail > div.master-detail__container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-content: flex-start;
+
+  background-color: #efefef;
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  
+  padding: 0;
+
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__list {
+  width: 35%;
+  min-height: 100%;
+  border-right: none;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__list > h4 {
+  font-size: .75em;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__list > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__list > ul > li {
+  padding: 1em;
+  width: 100%;
+  cursor: pointer;
+  border-bottom: solid 1px #dddddd;
+  background-color: transparent;
+  transition: background-color .33s ease;
+  border-right: solid 5px #dddddd;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__list > ul > li:hover,
+section.master-detail > div.master-detail__container > div.master-detail__list > ul > li.active {
+  background-color: #61dafb;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__list > ul > li.active {
+  border-right-color: #61dafb;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__detail {
+  width: 100%;
+  min-height: 100%;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__detail > h4 {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: .75em;
+  background-color: #282c34;
+  color: #efefef;
+  padding: 1em;
+}
+section.master-detail > div.master-detail__container > div.master-detail__detail > div.fields {
+  padding-left: 1em;
+  margin-bottom: 1.5em;
+  background-color: transparent;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__detail > div.fields > div.field {
+  margin-bottom: .55em;
+}
+
+article > div {
+  width: 100%;
+}
+
+article div.wait-spinner__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+article div.wait-spinner {
+  position: relative;
+  height: 600px;
+  width: 800px;
+
+  -webkit-box-shadow: 2px 2px 1px 0px rgba(40,44,52,0.68);
+  -moz-box-shadow: 2px 2px 1px 0px rgba(40,44,52,0.68);
+  box-shadow: 2px 2px 1px 0px rgba(40,44,52,0.68);
+
+}
+
+article div.wait-spinner > img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+article div.wait-spinner > h3 {
+  font-size: 2.25em;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 2em;
+  color: #efefef;
+}
+
+article div.wait-spinner > div.message {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 200px;
+  width: 100%;
+  padding: 1em;
+  font-size: 1em;
+  text-align: center;
+  color: #efefef;
+}
+
+h4 {
+  font-weight: normal;
+  border-bottom: solid 1px #dddddd;
+}
+
+.sub-body > .dashboard {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.sub-body > .dashboard > h4 {
+  width: 100%;
+}
+
+.sub-body > .dashboard > .dashboard-widget {
+  background-color: #dfdfdf;
+  height: 300px;
+  width: 30%;
+  margin: 1em;
+  border-radius: 2px;
+  padding: .5em;
+  
+  box-shadow: 2px 2px 1px 0px rgba(40,44,52,0.68);
+}
+
+.sub-body > .dashboard > .dashboard-widget > h4 {
+  font-size: 1.1em;
+  padding-bottom: .35em;
+  border-bottom: solid 1px #282c34;
+  width: 100%;
+  
+  margin-top: .15em;
+}
+
+.flex-spaced {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+.sub-header {
+  width: 100%;
+  border-bottom: solid 1px #dddddd;
+  background-color: #61dafb;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding: 1em;
+  height: 75px;
+}
+
+.sub-header > h4 {
+  margin: 0;
+  font-weight: 600;
+  border: none;
+}
+
+.sub-header > div > button {
+  background-color: #efefef;
+  border: solid 1px #dddddd;
+  color: #61dafb;
+  font-weight: 700;
+  font-size: 1.5em;
+  border-radius: 50%;
+  padding: .25em .5em;
+
+  box-shadow: 1px 1px 1px 0px rgba(40,44,52,0.68);
+  cursor: pointer;
+}
+
+.add-new-button {
+  font-weight: bold;
+}
+
+dialog {
+  width: 50%;
+  min-height: 65%;
+  max-height: 85%;
+  top: 5em;
+  padding: 0;
+}
+
+dialog[open] {
+  animation: .42s linear slidein;
+}
+
+dialog > .dialog-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+  height: 100%;
+}
+
+dialog > .dialog-container > header {
+  padding: 1em;
+  background-color: #61dafb;
+  border-bottom: solid 1px #dddddd;
+  max-height: min-content;
+}
+
+dialog > .dialog-container > header > h4 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+dialog > .dialog-container > footer {
+  padding: 1em;
+  background-color: #fefefe;
+  border-top: solid 1px #dddddd;
+  max-height: min-content;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-content: center;
+  align-items: center;
+}
+
+dialog > .dialog-container > footer > * {
+  margin-right: .5em;
+  padding: .5em;
+}
+
+dialog > .dialog-container > main {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1em;
+}
+
+dialog > .dialog-container > main > div {
+  width: 80%;
+  margin-bottom: 1em;
+}
+
+dialog > .dialog-container > main > div > label {
+  display: block;
+  width: 100%;
+  margin-bottom: .20em;
+}
+
+dialog > .dialog-container > main > div > input,
+dialog > .dialog-container > main > div > select {
+  padding: .5em;
+  width: 100%;
+  border: solid 1px #dddddd;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+}
+
+dialog > .dialog-container > main > div > input:invalid,
+dialog > .dialog-container > main > div > select:invalid {
+  border-color: rgba(255,99,132,1);
+  background-color: rgba(255,99,132, 0.4);
+}
+
+dialog::backdrop {
+  background: rgba(224, 228, 232, .9);
+  animation: .4s ease fade;
+}
+
+@keyframes slidein {
+  from {
+      transform: translate3d(0, 5px, 0);
+  }
+  to {
+      transfrom: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fade {
+  from {
+      opacity: .3;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+div.alert {
+  width: min-content;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding: 1em 1.25em;
+  border: solid 1px #dddddd;
+  margin: 0;
+  background-color: #282c34;
+}
+
+div.alert > span {
+  display: inline-block;
+  width: min-content;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: keep-all;
+  margin-right: 1em;
+}
+
+div.alert.alert-success {
+  color: rgba(6, 221, 6, 1);
+}
+
+div.alert.alert-error {
+  color: rgba(255,99,132,1);
+}
+
+div.alert.alert-warning {
+  color: rgba(238, 121, 11, 1);
+}
+
+.sub-container{
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: stretch;
+  max-height: 100%;
+}
+
+.sub-body {
+  min-height: calc(100% - 75px);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
