@@ -1,0 +1,34 @@
+.sub-body > .dashboard {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.sub-body > .dashboard > h4 {
+    width: 100%;
+}
+
+.sub-body > .dashboard > .dashboard-widget {
+    background-color: #dfdfdf;
+    height: min-content;
+    width: 30%;
+    margin: 1em;
+    border-radius: 2px;
+    padding: .5em;
+
+    box-shadow: 2px 2px 1px 0px rgba(40,44,52,0.68);
+}
+
+.sub-body > .dashboard > .dashboard-widget > h4 {
+    font-size: 1.1em;
+    padding-bottom: .35em;
+    border-bottom: solid 1px #282c34;
+    width: 100%;
+
+    margin-top: .15em;
+    margin-bottom: .5em;
+}
+  

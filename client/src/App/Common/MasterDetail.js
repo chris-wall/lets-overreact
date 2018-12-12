@@ -1,10 +1,11 @@
 import React from 'react';
+import './MasterDetail.css';
 
 export default class MasterDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { list: props.list };
+    this.state = { current: null };
     this.selectDetail = this.selectDetail.bind(this);
   }
 
@@ -13,7 +14,8 @@ export default class MasterDetail extends React.Component {
   }
 
   render() {
-    const { list, current } = this.state;
+    const { current } = this.state;
+    const { list } = this.props;
 
     return (
       <section className="master-detail">
@@ -28,14 +30,14 @@ export default class MasterDetail extends React.Component {
             </ul>
           </div>
           <div className="master-detail__detail">
-            <h4>Selected:</h4>
+            <h6>Selected Record:</h6>
             <div className="fields">
             {
               (typeof current === 'object' && current !== null ?
               Object.keys(current).filter(k => k !== 'key').map(key => (
                 <div className="field" key={key}>
-                  <span style={ { display: 'block', fontSize: '.75em', fontWeight: 'bold' } }>{key.toUpperCase()}</span>
-                  <span>{(typeof current[key] === 'object' ? current[key].name : current[key])}</span>
+                  <span className="field__label">{key.toUpperCase()}</span>
+                  <span className="field__data">{(typeof current[key] === 'object' ? current[key].name : current[key])}</span>
                 </div>
               ))
               : <div>No record selected</div>)

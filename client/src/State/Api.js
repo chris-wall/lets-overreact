@@ -11,7 +11,8 @@ export async function query(q) {
   }).then(r => r.json());
 }
 
-export async function createDriver(name, email) {
+export async function createDriver(data) {
+  console.log(`[API] Called createDriver with:`, data);
   const query = `
   mutation insertDriver($data: DriverData!) {
     insertDriver(data: $data) {
@@ -29,12 +30,13 @@ export async function createDriver(name, email) {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     },
-    body: JSON.stringify({ query, variables: { data: { name, email } } })
+    body: JSON.stringify({ query, variables: { data } })
   }).then(r => r.json());
 }
 
-export async function createVehicle(vin, year, make, model, driverId) {
-  const data = { vin, year, make, model, driverId };
+export async function createVehicle(data) {
+  console.log(`[API] Called createVehicle with `, data);
+
   const query = `
   mutation insertVehicle($data: VehicleData!) {
     insertVehicle(data: $data) {

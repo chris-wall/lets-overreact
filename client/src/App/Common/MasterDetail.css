@@ -1,0 +1,101 @@
+section.master-detail {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+
+  min-height: min-content;
+  height: 100%;
+  width: 100%;
+}
+
+section.master-detail > div.master-detail__container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-content: flex-start;
+
+  background-color: var(--primary-light);
+  min-height: 100%;
+  width: 100%;
+  margin: 0;  
+  padding: 0;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__list {
+  width: 35%;
+  min-height: 100%;
+  border-right: none;
+  background-color: var(--primary-light);
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__list > h4 {
+  font-size: .75em;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__list > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__list > ul > li {
+  padding: 1em;
+  width: 100%;
+  cursor: pointer;
+  border-bottom: solid 1px var(--border-light);
+  background-color: transparent;
+  transition: background-color .33s ease;
+  border-right: solid 5px var(--border-light);
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__list > ul > li:hover,
+section.master-detail > div.master-detail__container > div.master-detail__list > ul > li.active {
+  background-color: var(--highlight-blue);
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__list > ul > li.active {
+  border-right-color: var(--highlight-blue);
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__detail {
+  width: 100%;
+  min-height: 100%;
+  padding: 0;
+  background-color: var(--primary-lighter);
+}
+  
+section.master-detail > div.master-detail__container > div.master-detail__detail > h6 {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: .75em;
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
+  padding: 1em;
+}
+  
+section.master-detail > div.master-detail__container > div.master-detail__detail > div.fields {
+  padding: 0 1em;
+  background-color: transparent;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__detail > div.fields > div.field {
+  margin-bottom: 1em;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__detail > div.fields > div.field > span.field__label {
+  border-bottom: solid 1px var(--border-dark);
+  margin-bottom: .5em;
+  display: block;
+  font-size: .9em; 
+  font-weight: 600;
+}
+
+section.master-detail > div.master-detail__container > div.master-detail__detail > div.fields > div.field > span.field__data {
+  display: block;
+  font-size: 1em; 
+  font-weight: normal;
+}

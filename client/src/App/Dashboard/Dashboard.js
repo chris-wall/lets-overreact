@@ -1,5 +1,6 @@
 import React from 'react';
 import { Doughnut, Pie, Bar } from 'react-chartjs-2';
+import './Dashboard.css';
 
 const pie_data = {
 	labels: [
@@ -61,7 +62,10 @@ const bar_data = {
 const Dashboard = () => (
   <div className="sub-container">
     <header className="sub-header">
-      <h4>User Dashboard</h4>
+      <h4>
+        <i className="material-icons">dashboard</i>
+        <span>User Dashboard</span>
+      </h4>
     </header>
     <div className="sub-body">
       <div className="dashboard">

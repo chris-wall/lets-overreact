@@ -14,7 +14,6 @@ class VehicleType {
   }
 
   driver() {
-    console.log('[VehicleType] driver field resolver has fired');
     return db.from('driver').select({ key: this.driverId }) || {};
   }
 }
@@ -28,7 +27,6 @@ class DriverType {
   }
 
   vehicles() {
-    console.log(`[DriverType] vehicles field resolver has fired`);
     return db.from('vehicle').select({ driverId: this.key });
   }
 }
@@ -91,12 +89,10 @@ const db = new Database({
 });
 
 module.exports.vehicle = function ({ key = null } = {}) {
-  console.log('[Resolver] vehicle function has fired.');
   return new VehicleType(db.from('vehicle').select({ key }));
 }
 
 module.exports.vehicles = function ({ filters = null } = {}) {
-  console.log('[Resolver] vehicles function has fired.');
   return db.from('vehicle').select(filters).map(v => new VehicleType(v));
 }
 
@@ -113,12 +109,10 @@ module.exports.deleteVehicle = function ({ key }) {
 }
 
 module.exports.driver = function ({ key = null } = {}) {
-  console.log('[Resolver] driver function has fired.');
   return new DriverType(db.from('driver').select({ key }));
 }
 
 module.exports.drivers = function ({ filters = null } = {}) {
-  console.log('[Resolver] drivers function has fired.');
   const d = db.from('driver').select(filters).map(v => new DriverType(v));
   console.log(d);
   return d;

@@ -21,4 +21,4 @@ app.use('/api', express_graphql({
     graphiql: true
 }));
 
-app.listen(4000, () => console.log('Server Now Running On localhost:4000/api'));
+app.listen(4000, () => console.log('GraphQL Server Now Running On localhost:4000/api'));
